@@ -1,0 +1,456 @@
+' moves and their mechanics (power, pp, status etc...)
+Public Class Moves
+    Dim MoveName As String ' name of move
+    Dim MovePower As Integer ' power of move
+    Dim MoveAccuracy As Integer ' accuracy of move
+    Dim MovePP As Integer ' pp of move - make this editable
+    Dim MoveStatus As String ' any status or changes of move
+    Dim MoveType As String ' move type (fire, ice etc)
+    Dim MoveSpPhy As String '  is the move PHY or SP (or status ig)
+    Dim MoveID As Integer ' way of storing moves, ID will link to the rest of the data
+    Public Sub MoveInfo(ByRef MoveName2 As String)
+        If MoveName2 = MoveDatabase(MVName) Then ' pulls the name from database to see if it exists
+            MovePower = ""
+            MoveAccuracy = ""
+            MovePP = ""
+            MoveStatus = ""
+            MoveType = ""
+            MoveSpPhy = ""
+        End If
+
+    End Sub
+    Public Sub MoveDatabase()
+        Dim MVName As String
+        ' grass 
+        For i As Integer = 1 To 165
+            MoveID = MVName(i)
+            MVName(1) = "Absorb" ' sets all of the names, and gives them the ID
+            MVName(2) = "Leech Seed"
+            MVName(3) = "Mega Drain"
+            MVName(4) = "Petal Dance"
+            MVName(5) = "Razor Leaf"
+            MVName(6) = "Sleep Powder"
+            MVName(7) = "Solar Beam"
+            MVName(8) = "Spore"
+            MVName(9) = "Stun Spore"
+            MVName(10) = "Vine Whip"
+            MVName(11) = "Ember"
+            MVName(12) = "Fire Blast"
+            MVName(13) = "Fire Punch"
+            MVName(14) = "Fire Spin"
+            MVName(15) = "Flamethrower"
+            MVName(16) = "Bubble"
+            MVName(17) = "Bubblebeam"
+            MVName(18) = "Clamp"
+            MVName(19) = "Crabhammer"
+            MVName(20) = "Hydro Pump"
+            MVName(21) = "Surf"
+            MVName(22) = "Water Gun"
+            MVName(23) = "Waterfall"
+            MVName(24) = "Withdraw"
+            MVName(25) = "Acid"
+            MVName(26) = "Acid Armour"
+            MVName(27) = "Poison Gas"
+            MVName(28) = "Poison Powder"
+            MVName(29) = "Poison Sting"
+            MVName(30) = "Sludge"
+            MVName(31) = "Smog"
+            MVName(32) = "Toxic"
+            MVName(33) = "Aurora Beam"
+            MVName(34) = "Blizzard"
+            MVName(35) = "Haze"
+            MVName(36) = "Ice Beam"
+            MVName(37) = "Ice Punch"
+            MVName(38) = "Mist"
+            MVName(39) = "Barrage"
+            MVName(40) = "Bide"
+            MVName(41) = "Bind"
+            MVName(42) = "Body Slam"
+            MVName(43) = "Comet Punch"
+            MVName(44) = "Constrict"
+            MVName(45) = "Conversion"
+            MVName(46) = "Cut"
+            MVName(47) = "Defence Curl"
+            MVName(48) = "Disable"
+            MVName(49) = "Dizzy Punch"
+            MVName(50) = "Double Slap"
+            MVName(51) = "Double Team"
+            MVName(52) = "Double Edge"
+            MVName(53) = "Egg Bomb"
+            MVName(54) = "Explosion"
+            MVName(55) = "Flash"
+            MVName(56) = "Focus Energy"
+            MVName(57) = "Fury Attack"
+            MVName(58) = "Fury Swipes"
+            MVName(59) = "Glare"
+            MVName(60) = "Growl"
+            MVName(61) = "Growth"
+            MVName(62) = "Guillotine"
+            MVName(63) = "Harden"
+            MVName(64) = "Headbutt"
+            MVName(65) = "Horn Attack"
+            MVName(66) = "Horn Drill"
+            MVName(67) = "Hyper Beam"
+            MVName(68) = "Hyper Fang"
+            MVName(69) = "Leer" ' nice
+            MVName(70) = "Lovely Kiss"
+            MVName(71) = "Mega Kick"
+            MVName(72) = "Mega Punch"
+            MVName(73) = "Metronome"
+            MVName(74) = "Mimic"
+            MVName(75) = "Minimise"
+            MVName(76) = "Pay Day"
+            MVName(77) = "Pound"
+            MVName(78) = "Quick Attack"
+            MVName(79) = "Rage"
+            MVName(80) = "Razor Wind"
+            MVName(81) = "Recover"
+            MVName(82) = "Roar"
+            MVName(83) = "Scratch"
+            MVName(84) = "Screech"
+            MVName(85) = "Self Destruct"
+            MVName(86) = "Sharpen"
+            MVName(87) = "Sing"
+            MVName(88) = "Skull Bash"
+            MVName(89) = "Slam"
+            MVName(90) = "Slash"
+            MVName(91) = "Smokescreen"
+            MVName(92) = "Soft Boiled"
+            MVName(93) = "Sonic Boom"
+            MVName(94) = "Spike Cannon"
+            MVName(95) = "Splash"
+            MVName(96) = "Stomp"
+            MVName(97) = "Strength"
+            MVName(98) = "Struggle"
+            MVName(99) = "Substitute"
+            MVName(100) = "Super Fang"
+            MVName(101) = "Supersonic"
+            MVName(102) = "Swift"
+            MVName(103) = "Swords Dance"
+            MVName(104) = "Tackle"
+            MVName(105) = "Tail Whip"
+            MVName(106) = "Take Down"
+            MVName(107) = "Thrash"
+            MVName(108) = "Transform"
+            MVName(109) = "Tri Attack"
+            MVName(110) = "Vice Grip"
+            MVName(111) = "Whirlwind"
+            MVName(112) = "Wrap"
+            MVName(113) = "Agility"
+            MVName(114) = "Amnesia"
+            MVName(115) = "Barrier"
+            MVName(116) = "Confusion"
+            MVName(117) = "Dream Eater"
+            MVName(118) = "Hypnosis"
+            MVName(119) = "Kinesis"
+            MVName(120) = "Light Screen"
+            MVName(121) = "Meditate"
+            MVName(122) = "Psybeam"
+            MVName(123) = "Psychic"
+            MVName(124) = "Psywave"
+            MVName(125) = "Reflect"
+            MVName(126) = "Rest"
+            MVName(127) = "Teleport"
+            MVName(128) = "Bite"
+            MVName(129) = "Bone Club"
+            MVName(130) = "Bonemerang"
+            MVName(131) = "Dig"
+            MVName(132) = "Earthquake"
+            MVName(133) = "Fissure"
+            MVName(134) = "Sand Attack"
+            MVName(135) = "Confuse Ray"
+            MVName(136) = "Lick"
+            MVName(137) = "Night Shade"
+            MVName(138) = "Counter"
+            MVName(139) = "Double Kick"
+            MVName(140) = "High Jump Kick"
+            MVName(141) = "Jump Kick"
+            MVName(142) = "Karate Chop"
+            MVName(143) = "Low Kick"
+            MVName(144) = "Rolling Kick"
+            MVName(145) = "Seismic Toss"
+            MVName(146) = "Submission"
+            MVName(147) = "Dragon Rage"
+            MVName(148) = "Drill Peck"
+            MVName(149) = "Fly"
+            MVName(150) = "Gust"
+            MVName(151) = "Mirror Move"
+            MVName(152) = "Peck"
+            MVName(153) = "Sky Attack"
+            MVName(154) = "Wing Attack"
+            MVName(155) = "Leech Life"
+            MVName(156) = "Pin Missile"
+            MVName(157) = "String Shot"
+            MVName(158) = "Twineedle"
+            MVName(159) = "Thunder"
+            MVName(160) = "Thunder Punch"
+            MVName(161) = "Thunder Shock"
+            MVName(162) = "Thunder Wave"
+            MVName(163) = "Thunderbolt"
+            MVName(164) = "Rock Slide"
+            MVName(165) = "Rock Throw"
+            If MoveID <= "10" And MoveID >= "1" Then ' sets all the types for moves.
+                MoveType = "Grass"
+            End If
+            If MoveID <= "11" And MoveID >= "15" Then
+                MoveType = "Fire"
+            End If
+            If MoveID <= "16" And MoveID >= "24" Then
+                MoveType = "Water"
+            End If
+            If MoveID <= "25" And MoveID >= "32" Then
+                MoveType = "Poison"
+            End If
+            If MoveID <= "33" And MoveID >= "38" Then
+                MoveType = "Ice"
+            End If
+            If MoveID <= "39" And MoveID >= "112" Then
+                MoveType = "Normal"
+            End If
+            If MoveID <= "113" And MoveID >= "127" Then
+                MoveType = "Psychic"
+            End If
+            If MoveID = "128" Then
+                MoveType = "Dark"
+            End If
+            If MoveID <= "129" And MoveID >= "134" Then
+                MoveType = "Ground"
+            End If
+            If MoveID <= "135" And MoveID >= "137" Then
+                MoveType = "Ghost"
+            End If
+            If MoveID <= "138" And MoveID >= "146" Then
+                MoveType = "Fighting"
+            End If
+            If MoveID = "147" Then
+                MoveType = "Dragon"
+            End If
+            If MoveID <= "148" And MoveID >= "154" Then
+                MoveType = "Flying"
+            End If
+            If MoveID <= "155" And MoveID >= "158" Then
+                MoveType = "Bug"
+            End If
+            If MoveID <= "159" And MoveID >= "163" Then
+                MoveType = "Electric"
+            End If
+            If MoveID <= "164" And MoveID >= "165" Then
+                MoveType = "Rock"
+            End If
+        Next
+        ' sets the moves damage effect, special works off spak and spdef, status does no damage, physical works off atk and def
+        If MoveID = "1" Or "3" Or "4" Or "7" Or "11" Or "12" Or "14" Or "15" Or "16" Or "17" Or "20" Or "21" Or "22" Or "25" Or "29" Or "30" Or "31" Or "33" Or "34" Or "36" Or "67" Or "80" Or "93" Or "102" Or "109" Or "115" Or "116" Or "121" Or "122" Or "123" Or "137" Or "147" Or "150" Or "159" Or "161" Or "163" Then
+            MoveSpPhy = "Special"
+        End If
+
+        If MoveID = "2" Or "6" Or "8" Or "9" Or "24" Or "26" Or "27" Or "28" Or "32" Or "35" Or "38" Or "45" Or "47" Or "48" Or "51" Or "55" Or "56" Or "59" Or "60" Or "61" Or "63" Or "69" Or "70" Or "73" Or "74" Or "75" Or "81" Or "82" Or "84" Or "86" Or "87" Or "91" Or "92" Or "95" Or "99" Or "101" Or "103" Or "105" Or "108" Or "111" Or "112" Or "113" Or "114" Or "117" Or "118" Or "119" Or "120" Or "124" Or "125" Or "126" Or "134" Or "135" Or "151" Or "157" Or "162" Then
+            MoveSpPhy = "Status"
+            MovePower = "0"
+        End If
+
+        If MoveID = "5" Or "10" Or "13" Or "18" Or "19" Or "23" Or "37" Or "39" Or "40" Or "41" Or "42" Or "43" Or "44" Or "46" Or "49" Or "50" Or "52" Or "53" Or "54" Or "57" Or "58" Or "62" Or "64" Or "65" Or "66" Or "68" Or "71" Or "72" Or "76" Or "77" Or "78" Or "79" Or "83" Or "85" Or "88" Or "89" Or "90" Or "94" Or "96" Or "97" Or "98" Or "100" Or "104" Or "106" Or "107" Or "110" Or "127" Or "128" Or "129" Or "130" Or "131" Or "132" Or "133" Or "136" Or "138" Or "139" Or "140" Or "141" Or "142" Or "143" Or "144" Or "145" Or "146" Or "148" Or "149" Or "152" Or "153" Or "154" Or "155" Or "156" Or "158" Or "160" Or "164" Or "165" Then
+            MoveSpPhy = "Physical"
+        End If
+
+
+
+
+    absorb - sp - 20po - 100ac - 25pp - recovers half damage dealt
+    leech seed - status - 90ac - 10pp - drains hp each turn
+    mega drain - sp - 40po - 100ac - 15pp - recovers 1/2 dmg dealt
+    petal dance - sp - 120po - 100ac - 10pp - attacks for 2-3 turns then confuses self
+    razor leaf - phy - 55po - 95ac - 25pp - high crit ratio
+    sleep powder - status - 75ac - 15pp - causes sleep
+    solar beam - sp - 120po - 100ac - 10pp - 2 turn attack, 1 turn if sunny
+    spore - status - 100ac - 15pp - causes sleep
+    stun spore - status - 75ac - 30pp - causes paralysis
+    vine whip - phy - 45po - 100ac - 25pp
+        ' fire
+    ember - sp - 40po - 100ac - 25pp - may burn
+    fire blast - sp - 110po - 85ac - 5pp - may burn
+    fire punch - phy - 75po - 100ac - 15pp - may burn (common trend)
+    fire spin - sp - 35po - 85acc - 15pp - traps 4-5 turns (no burn?!?)
+    flamethrower - sp - 90po - 100ac - 15pp - may burn (oh its back)
+        ' water
+    bubble - sp - 40po - 100ac - 30pp - may lower spd
+    bubblebeam - sp - 65po - 100ac - 20pp - may lower spd
+    clamp - phy - 35po - 85ac - 10pp - traps opponent 4-5 turns
+    crabhammer - phy - 100po - 90ac - 10pp - high crit ratio
+    hydro pump - sp - 110po - 80ac - 5pp 
+    surf - sp - 90po - 100ac - 15pp - overworld effect: surf on water
+    water gun - sp - 40po - 100ac - 25pp
+    waterfall - phy - 80po - 100ac - 15pp - may flinch
+    withdraw - status - 40ac - raises def
+        ' poison 
+    acid - sp - 40po - 100ac - 30pp - may lower spdef
+    acid armour - status - 20pp - sharp raise def
+    poison gas - status - 90ac - 40pp - poisons
+    poison powder - status - 75ac - 35pp - poisons
+    poison sting - sp - 15po - 100ac - 35pp - may poison
+    sludge - sp - 65po - 100ac - 20pp - may poison 
+    smog - sp - 30po - 70acc - 20pp - may poison
+    toxic - status - 90ac - 10pp - badly poison
+        ' ice
+    Aurora beam - sp - 65po - 100acc - 20pp - may lower atk
+    blizzard - sp - 110po - 70 acc - 5pp - may freeze
+    haze - status - 30pp - resets all stat changes (dang)
+    ice beam - sp - 90po - 100ac - 10pp - may freeze
+    ice punch - phy - 75po - 100ac - 15pp - may freeze
+    mist - status - 30pp - stat changes cant occur for 5 turns
+        ' normal
+    barrage - phy - 15po - 85acc - 20pp - hits 2-5 times
+    bide - phy - 10pp - user takes dmg for two turns then hits back twice as hard
+    bind - phy - 15po - 85acc - 20pp - traps opponent for 4-5 turns
+    body slam - phy - 85po - 100ac - 15pp - may paralyze
+    comet punch - phy - 18p - 85ac - 15pp - hits 2-5 times
+    constrict - phy - 10po - 100ac - 35pp - may lower spd
+    conversion - status - 30pp - changes type to its first move ' pain to fkn code
+    cut - phy - 50po - 95ac - 30pp - overworld affect: cut smol trees
+    defence curl - status - 40pp - raise def
+    disable - status - 100ac - 20pp - opponent cant use last move for 5 turns
+    dizzy punch - phy - 70po - 100ac - 10pp - may confuse 
+    double slap - phy -  15po - 85ac - 10pp - hits 2-5 times 50
+    double team - status - 15pp - raises evasion
+    double edge - phy - 120po - 100ac - 15pp - user receives recoil 
+    egg bomb - phy - 100po - 75pp - 10pp
+    explosion - phy - 250po - 100ac - 5pp - you die lmao 54
+    flash - status - 100ac - 25pp - lowers acc, overworld effect: lights up caves (im gonna make dark caves?!?)
+    focus energy - status - 30pp - increases crit ratio
+    fury attack - phy - 15po - 85ac - 20pp - hits 2-5 times
+    fury swipes - phy - 18po - 80ac - 15pp - hits 2-5 times 58
+    glare - status - 100ac - 30pp - paralyzes opponents
+    growl - status - 100ac - 40pp - lowers atk
+    growth (why r u not grass) - status - 40pp - raises atk and spak 61
+    guillotine - phy - 30acc - 5pp - OHKO!!!
+    harden - status - 30pp - raises def
+    headbutt - phy - 70po - 100ac - 15pp - may flinch
+    horn attack - phy - 65po - 100ac - 25pp 
+    horn drill- phy - 30acc - 5p - OHKO!!!
+    hyper beam (imma firin mah lazer) - sp - 150po - 90ac - 5pp - take a turn to rest 67
+    hyper fang - phy - 80po - 90ac - 15ac - may flinch
+    leer - status - 100ac - 30pp - lowers def 69
+    lovely kiss - status - 75ac - 10pp - puts opponent to sleep
+    mega kick - phy - 120po - 75ac - 5 pp 
+    mega punch - phy - 80po - 85ac - 20pp 
+    metronome - status - 10pp - performs any move (aw fuck ive gotta give em all id's dont i? fml)
+    mimic - status - 10pp - copy opponents last move
+    minimise - status - 10pp - sharply raises evasion 
+    pay day - phy - 40po - 100ac - 20pp - small amount of money earned at end of match (just gonna make it a flat 1k, fk this)
+    pound - phy - 40po - 100ac - 35pp
+    quick attack - phy - 40po - 100ac - 30pp - user attacks first 
+    rage - phy - 20po - 100ac - 20pp - raises atk when hit 79
+    razor wind - sp - 80po - 100ac - 10pp - 2 turns attack, high crit ratio
+    recover - status - 10pp - recover half hp
+    roar - status - 20pp - trainer battle: force switch opponent, wild battle: run away
+    scratch - phy - 40po - 100ac - 45pp
+    screech - status - 85ac - 50pp - lower def
+    self destruct - phy - 200po - 100ac - 5pp - user faints
+    sharpen - status - 30pp - raises atk 86
+    sing - status - 55ac - 15pp - may sleep
+    skull bash - phy - 130po - 100ac - 10pp - raises def, 2 turn attack
+    slam - phy - 80po - 75ac - 20pp
+    slash - phy - 70po - 100ac - 20pp - high crit ratio 90
+    smokescreen - status - 100ac - 20pp - lowers acc
+    soft boiled - status - 10pp - recover half hp
+    sonic boom - sp - 90acc - 20pp - always does 20dmg
+    spike cannon - phy - 20po - 100ac - 15pp - hits 2-5 times
+    splash - status - 40pp - does nothing
+    stomp - phy - 60po - 100ac - 20pp - may flinch, 2x dmg if opponent uses minimise
+    strength - phy - 80po - 100ac - 15pp - overworld effect: move boulders
+    struggle - phy - 50po - 100ac - only usable when no pp is left, causes recoil damage 98
+    substitute - status - 10pp - uses 24% hp to create a decoy
+    super fang - phy - 90acc - 10pp - takes 1/2 of opponents hp
+    supersonic - status - 55ac - 20pp - causes confusion
+    swift - sp - 60po - infinite ac - 20pp - always hits
+    swords dance - status - 20pp - sharply raises atk 103
+    tackle - phy - 40po - 100ac - 35pp
+    tail whip - status - 100ac - 30pp - lowers def
+    take down - phy - 90po - 85ac - 20pp - recoil dmg
+    thrash - phy - 120po - 100ac - 10pp - attacks for 2-3 turns, confused after
+    transform - status - 10pp - user copies opponent (excluding hp)
+    tri attack - sp - 80po - 100ac - 10pp - may para, burn or frz
+    vice grip - phy - 55po - 100ac - 30pp
+    whirlwind - status - 20pp - in battles, force swap enemy; insta run from wild
+        ' psychic 
+    agility - status - 30pp - sharp raise spd 112
+    amnesia - status - 20pp - sharp raise spdef
+    barrier - status - 20pp - sharp raise def
+    confusion - sp - 50po - 100ac - 25pp - may confuse 
+    dream eater - sp - 100po - 100ac - 15pp - recovers half dmg as health, only works on sleepin pokes
+    hypnosis - status - 60ac - 20pp - puts opponent to sleep
+    kinesis - status - 80ac - 15pp - lowers acc
+    light screen - status - 30pp - halves dmg from spak moves for 5 turns; can be broken by brick break
+    meditate - status - 40pp - raises atk 120
+    psybeam - sp - 65p - 100ac - 20pp - may confuse
+    psychic - sp - 90po - 100ac - 10pp - may lower spdef
+    psywave - sp - 80ac - 15pp - inflicts 50-150% of users level
+    reflect - status - 20pp - halves dmg from phy moves for 5 turns; can be broken by brick break
+    rest - status - 10pp - sleep for two turns but fully healed (including status)
+    teleport - status - 20pp - flee wild battles; tele to center
+    wrap - phy - 15po - 90ac - 20pp - traps oppo for 4-5 turns, damages each turn (fuck) 127
+        ' dark
+    bite - phy - 60po - 100acc - 25pp - may flinch
+        ' ground
+    bone club - phy -  65po - 85ac - 20pp - may flinch
+    bonemerang - phy - 50po - 90acc - 10pp - hits twice
+    dig - phy - 80po - 100ac - 10pp - 2 turn attack, overworld affect: escape caves
+    earthquake - phy - 100po - 100ac - 10pp - power doubled if opponent is usin dig
+    fissure - phy - 30acc - 5pp - OHKO!!! 133
+    sand attack - status - 100ac - 15pp - lowers acc
+        ' ghost
+    confuse ray - status - 100ac - 10pp - confuses opponent
+    lick - phy - 30po - 100ac - 30pp - may paralyze
+    night shade - sp - 100ac - 15pp - deals damage equal to level (static damage sounds easier to do, better/worse dragon rage lmao)
+        ' fighting
+    counter - phy - 100ac - 20pp - when hit by phy move, hit back for 2x dmg
+    double kick - phy - 30po - 100ac - 30pp - hits twice
+    high jump kick - phy - 130po - 90ac - 10ac - if misses, lose half hp 
+    jump kick - phy - 100po - 95ac - 10pp - if misses, lose half hp (so worse high jump kick? -_-)
+    karate chop - phy - 50po - 100ac - 25pp - high crit ratio
+    low kick - phy - 100ac - 25pp - more weight of opponent = stronger (how tf do i code this)
+    rolling kick - phy - 60po - 85ac - 15pp - may flinch
+    seismic toss - phy - 100ac - 20pp - inflicts dmg equal to users level
+    submission - phy - 80po - 80ac - 20pp - recoil damage 146
+        ' dragon
+    dragon rage - sp - 100ac - 15pp - always deals 40dmg
+        ' flying
+    drill peck - phy - 80po - 100ac - 20pp
+    fly - phy - 90po - 95ac - 15pp - 2 turn move, overworld effect: visit any town youve been to (basically fast travel lul)
+    gust - sp - 40po - 100ac - 35pp - if opponent uses fly/bounce, 2x dmg (wait what this is a thing??)
+    mirror move - status 20pp - user performs opponents last move (better mimic?)
+    peck - phy - 35po - 100ac - 35pp
+    sky attack - phy - 140po - 90ac - 5pp - 2 turn attack, may flinch
+    wing attack - phy - 60po - 100ac - 35pp 154
+        ' bug
+    leech life - phy - 80po - 100ac - 10pp - user recovers 1/2 dmg dealt
+    pin missile - phy - 25po - 95ac - 20pp - hits 2-5 times
+    string shot - status - 95acc - 40pp - lowers spd
+    twineedle - phy - 25po - 100ac - 20pp - hits twice; may poison 158
+        ' electric
+    thunder - sp - 110po - 70ac - 10pp - may para, 100% accuracy in rain
+    thunder punch - phy - 75po - 100ac - 15pp - may para
+    thunder shock - sp - 40po - 100ac - 30pp - may para
+    thunder wave - status - 90ac - 20pp - will para
+    thunderbolt - sp - 90po - 100ac - 15pp - may para
+        ' rock 
+    rock slide - phy - 75po - 90ac - 10pp - may flinch
+    rock throw - phy - 50po - 90ac - 15pp
+
+
+    End Sub
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+End Class
