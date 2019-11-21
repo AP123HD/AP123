@@ -1,0 +1,86 @@
+Public Class Move
+
+    Private MoveName As String
+    Private MovePower As Integer
+    Private MoveAccuracy As Integer
+    Private MovePP As Integer
+    Private MoveStatusInfliction As String
+    Private MoveType As String
+    Private MoveIsPhysical As Boolean    
+    
+    Public Sub New(pName As String, pPower As Integer, pAccuracy As Integer, _ 
+        pPP As Integer, pStatusInfliction As String, pType As String, pIsPhysical As Boolean)
+        
+        MoveName = pName
+        MovePower = pPower
+        MoveAccuracy = pAccuracy
+        MovePP = pPP
+        MoveStatusInfliction = pStatusInfliction
+        MoveType = pType
+        MoveIsPhysical = pIsPhysical
+    End Sub
+    
+    Public Property Name() As String
+        Get
+          Return MoveName
+        End Get
+        Set(ByVal value As String)
+          MoveName = value
+        End Set
+    End Property
+    
+    Public Property Power() As Integer
+        Get
+          Return MovePower
+        End Get
+        Set(ByVal value As Integer)
+          MovePower = value
+        End Set
+    End Property
+    
+    Public Property Accuracy() As Integer
+        Get
+          Return MoveAccuracy
+        End Get
+        Set(ByVal value As Integer)
+          MoveAccuracy = value
+        End Set
+    End Property
+    
+    Public Property PP() As Integer
+        Get
+          Return MovePP
+        End Get
+        Set(ByVal value As Integer)
+          MovePP = value
+        End Set
+    End Property
+    
+    Public Property StatusInfliction() As String
+        Get
+          Return MoveStatusInfliction
+        End Get
+        Set(ByVal value As String)
+          MoveStatusInfliction = value
+        End Set
+    End Property
+    
+    Public Property Type() As String
+        Get
+          Return MoveType
+        End Get
+        Set(ByVal value As String)
+          MoveType = value
+        End Set
+    End Property
+    
+    Public Property IsPhysical() As Boolean
+        Get
+          Return MoveIsPhysical
+        End Get
+        Set(ByVal value As Boolean)
+          MoveIsPhysical = value
+        End Set
+    End Property
+    
+End Class
