@@ -1,9 +1,23 @@
 Public Class MoveRepo
-    Private Moves As Array
-    Function GetMovebyName()
 
+    Private Shared mInstance As MoveRepo = New MoveRepo
+    Private Moves As Array
+    
+    Function GetMoveByName()
+        
     End Function
-    Function init()
+    
+    Private Sub New()
+        init()
+    End Sub
+    
+    Public Shared ReadOnly Property Instance As MoveRepo
+        Get
+            Return mInstance
+        End Get
+    End Property
+     
+    Public Shared Function init()
         Moves(1) = New Move("Absorb", 20, 100, 25, "Recover 50% of damage inflicted", "Grass", False)
         Moves(2) = New Move("Leech seed", 0, 90, 10, "Drains 1/6th hp each turn and heals user damage dealt", "Grass", False)
         Moves(3) = New Move("Mega Drain", 40, 100, 15, "Recovers 50% of damage inflicted", "Grass", False)
