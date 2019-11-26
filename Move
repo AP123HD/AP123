@@ -204,6 +204,7 @@ Public Class Move
 
             Modifier = CritVal * RanVal * STAB * TypVal * BRN * OtherVal
         DMGDealt = ((((2*PokeLVL/5)+2)*MovePower*PokeStats(2)/PokeStats(3))/50)+2)*Modifier() 
+        ' PokeStats is an Array (hopefully) 1 is hp, 2 is atk, 3 is def, 4 is spak, 5 is spdef, 6 is spd
     End Function
     
 End Class
