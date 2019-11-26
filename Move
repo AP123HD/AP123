@@ -83,4 +83,127 @@ Public Class Move
         End Set
     End Property
     
+      Public Function Perform()
+        Private MoveEffect As Array
+        MoveEffect(1) = "HCR"
+        MoveEffect(2) = "PR"
+        MoveEffect(3) = "GPR"
+        MoveEffect(4) = "FR"
+        MoveEffect(5) = "BR"
+        MoveEffect(6) = "GBR"
+        MoveEffect(7) = "PO"
+        MoveEffect(8) = "BPO"
+        MoveEffect(9) = "GPO"
+        MoveEffect(10) = "CF"
+        MoveEffect(11) = "GCF"
+        MoveEffect(12) = "SL"
+        MoveEffect(13) = "GSL"
+        MoveEffect(14) = "LDF"
+        MoveEffect(15) = "LAT"
+        MoveEffect(16) = "LSP"
+        MoveEffect(17) = "LSA"
+        MoveEffect(18) = "LSD"
+        MoveEffect(19) = "HDF"
+        MoveEffect(20) = "HAT"
+        MoveEffect(21) = "HSP"
+        MoveEffect(22) = "HSA"
+        MoveEffect(23) = "HSD"
+        MoveEffect(24) = "RC"
+        MoveEffect(25) = "FL"
+        MoveEffect(26) = "CO"
+        MoveEffect(27) = "MH"
+        MoveEffect(28) = "TT"
+        MoveEffect(29) = "OH"
+        MoveEffect(31) = "SW"
+        MoveEffect(32) = "SB"
+        MoveEffect(33) = "RN"
+        MoveEffect(34) = "LH"
+        MoveEffect(35) = "HZ"
+        MoveEffect(36) = "DH"
+        MoveEffect(37) = "IH"
+        MoveEffect(38) = "TP"
+        MoveEffect(39) = "TR"
+        MoveEffect(40) = "ET"
+        MoveEffect(41) = "CU"
+        MoveEffect(42) = "LAC"
+        MoveEffect(43) = "LEV"
+        MoveEffect(44) = "HAC"
+        MoveEffect(45) = "HEV"
+        ' HCR = High crit chance
+        'PR is paralysis
+        ' FR is freeze
+        'BR is burn
+        'PO is poison
+        'BPO is badly poisoned
+        'CF is confusion
+        ' GPR, GBR, GSP, GPO, GCF is guaranteed versions
+        'SL is sleep
+        'DF is def
+        'AT is attack
+        'SP is speed
+        'SA is special attack
+        'SD is special defence
+        'LDF, LAT, LSP, LSA, LSD, LAC, LEV is lowered stats
+        'HDF, HAT, HSP, HSA, HSD, HAC, HEV is increased stats
+        'AC is accuracy
+        'EV is Evasion
+        'RC is recoil
+        'FL is flinch
+        'CO is consistent damage
+        'MH is multihit 
+        'TT is two turn attacks
+        'OH is One shot kills
+
+        'SW is forcing switching opponents/running away (Roar and whirlwind)
+        'SB is substitute (making a decoy)
+        'RN is random move (metronome)
+        'LH is lingering damage (Bind for instance)
+        'HZ is reset stats (Haze)
+        'DH is drain HP
+        'IH is restore HP
+        'TP is trapping opponents (Also bind)
+        'TR is transform 
+        'ET is three turn attacks (basically just bide)
+        'CU is counter
+        Dim Effect As Integer
+
+    End Function
+    Public Function DMGCalc()
+        'Damage = ((((2*level/5)+2)*Power*Attack/Defence)/50)+2)*Modifier
+        'Modifiers = crit * Random * STAB * burn * other
+        'crits do 2X DMG, random is a random integer percentage from 0.85 and 1.00
+        'Type is the effectiveness, 0 for ineffective, 0.25 for 2 not very effective, 0.5 for one NVE, 1 for neutral, 2 for a super effective, 4 for 2 super effective
+        'Burn is 0.5 if the user is burned
+        'Other is for certain moves, default value is 1
+        'Body slam is 2 if the opponent has used minimize
+        'Earthquake is 2 of the opponent is in turn 1 of dig
+        'Light screen makes spak 0.5
+        'Reflect makes atk 0.5
+        'Stomp is 2 if the opponent has used minimize
+        'Each step of the process is rounded towards 0, cutting off decimals
+        'If a move is meant to do 0 dmg (not inc status moves), do 1 dmg
+        'Most moves have a 6.25% chance to crit (round to 6)
+        Dim DMGDealt As Integer
+        Dim Modifier As Integer
+        Dim STAB As Integer = 1
+        Dim TypVal As Integer = 1
+        Dim BRN As Integer = 1
+        Dim OtherVal As Integer = 1
+
+        Randomize()
+        Dim CritVal As Integer = CInt(Int((1 * Rnd()) + 1))
+        If CritVal is >= 6 then
+            CritVal = 2
+        Else
+            CritVal = 1()
+
+            Randomize()
+            Dim RanVal As inetegr = CInt(Int((1 * Rnd()) + 1))
+
+
+
+            Modifier = CritVal * RanVal * STAB * TypVal * BRN * OtherVal
+        DMGDealt = ((((2*PokeLVL/5)+2)*MovePower*PokeStats(2)/PokeStats(3))/50)+2)*Modifier() 
+    End Function
+    
 End Class
