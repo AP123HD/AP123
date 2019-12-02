@@ -1,0 +1,75 @@
+Public Class Pokemon
+    Public PokeName As String
+    Private PokeStats As Array
+    Public PokeLVL As Integer
+
+    Public Function GetStats() As Integer
+        PokeStats(1) = "HP"
+        PokeStats(2) = "ATK"
+        PokeStats(3) = "DEF"
+        PokeStats(4) = "SPAK"
+        PokeStats(5) = "SPDEF"
+        PokeStats(6) = "SPD"
+
+    End Function
+    Public Function DamageCalc(ByVal MovePower As Integer, ByVal IsPhysical As Boolean, ByRef Damage As Integer)
+        'Damage = ((((2*level/5)+2)*Power*Attack/Defence)/50)+2)*Modifier
+        'Modifiers = crit * Random * STAB * burn * other
+        'crits do 2X DMG, random is a random integer percentage from 0.85 and 1.00
+        'Type is the effectiveness, 0 for ineffective, 0.25 for 2 not very effective, 0.5 for one NVE, 1 for neutral, 2 for a super effective, 4 for 2 super effective
+        'Burn is 0.5 if the user is burned
+        'Other is for certain moves, default value is 1
+
+        'Light screen makes spak 0.5
+        'Reflect makes atk 0.5
+
+        'Each step of the process is rounded towards 0, cutting off decimals
+        'If a move is meant to do 0 dmg (not inc status moves), do 1 dmg
+        'Most moves have a 6.25% chance to crit (round to 6)
+        Dim DMGDealt As Integer
+        Dim Modifier As Integer
+        Dim STAB As Integer = 1
+        Dim TypVal As Integer = 1
+        Dim BRN As Double = 1
+        Dim OtherVal As Integer = 1
+        Dim Boo As Boolean = False
+        Dim RanVal As Double
+
+        Randomize()
+        CritVal = Math.Ceiling(Rnd() * 100)
+        If CritVal is >= 6 then
+            CritVal = 2
+        Else
+            CritVal = 1()
+        End If
+
+        Randomize()
+        Do Until Boo = True
+            RanVal = Math.Ceiling(Rnd() * 100)
+            If RanVal >= 85 Then
+                RanVal = RanVal / 100
+                Boo = True
+            Else
+                Boo = False
+            End If
+
+            If UserBRN = True Then
+                BRN = 0.5
+            End If
+
+            If IsPhysical = True Then
+                Modifier = CritVal * RanVal * STAB * TypVal * BRN * OtherVal
+        DMGDealt = ((((2*PokeLVL/5)+2)*MovePower*PokeStats(2)/PokeStats(3))/50)+2)*Modifier()
+            Else
+                Modifier = CritVal * RanVal * STAB * TypVal * BRN * OtherVal
+        DMGDealt = ((((2*PokeLVL/5)+2)*MovePower*PokeStats(4)/PokeStats(5))/50)+2)*Modifier()
+            End If
+
+            If DMGDealt = 0 Then
+                DMGDealt = 1
+            End If
+            Damage = DMGDealt
+            Return Damage
+    End Function
+
+End Class
