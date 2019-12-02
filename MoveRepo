@@ -1,185 +1,270 @@
 Public Class MoveRepo
-
     Private Shared mInstance As MoveRepo = New MoveRepo
     Private Moves As Array
-    
+
     Function GetMoveByName()
-        
+
     End Function
-    
+
     Private Sub New()
         init()
     End Sub
-    
+
     Public Shared ReadOnly Property Instance As MoveRepo
         Get
             Return mInstance
         End Get
     End Property
-     
     Public Shared Function init()
-        Moves(1) = New Move("Absorb", 20, 100, 25, "Recover 50% of damage inflicted", "Grass", False)
-        Moves(2) = New Move("Leech seed", 0, 90, 10, "Drains 1/6th hp each turn and heals user damage dealt", "Grass", False)
-        Moves(3) = New Move("Mega Drain", 40, 100, 15, "Recovers 50% of damage inflicted", "Grass", False)
-        Moves(4) = New Move("Petal Dance", 120, 100, 10, "Attacks for 2-3 turns, then causes self confusion", "Grass", False)
-        Moves(5) = New Move("Razor Leaf", 55, 95, 25, "Higher chance for crit", "Grass", True)
-        Moves(6) = New Move("Sleep Powder", 0, 75, 15, "Puts opponent to sleep", "Grass", False)
-        Moves(7) = New Move("Solar Beam", 120, 100, 10, "Takes 2 turns to charge, unless sunny", "Grass", False)
-        Moves(8) = New Move("Spore", 0, 100, 15, "Puts Opponent to sleep", "Grass", False)
-        Moves(9) = New Move("Stun Spore", 0, 75, 30, "Gives opponent paralysis", "Grass", False)
+        Moves(1) = New Move("Absorb", 20, 100, 25, "IH", "Grass", False)
+        Moves(2) = New Move("Leech seed", 0, 90, 10, "DH,IH", "Grass", False)
+        Moves(3) = New Move("Mega Drain", 40, 100, 15, "IH", "Grass", False)
+        Moves(4) = New Move("Petal Dance", 120, 100, 10, "MH", "Grass", False)
+        Moves(5) = New Move("Razor Leaf", 55, 95, 25, "HCR", "Grass", True)
+        Moves(6) = New Move("Sleep Powder", 0, 75, 15, "GSL", "Grass", False)
+        '  Moves(7) = New Move("Solar Beam", 120, 100, 10, "TT", "Grass", False)
+        Moves(8) = New Move("Spore", 0, 100, 15, "GSL", "Grass", False)
+        Moves(9) = New Move("Stun Spore", 0, 75, 30, "GPR", "Grass", False)
         Moves(10) = New Move("Vine Whip", 45, 100, 25, "Nothing", "Grass", True)
-        Moves(11) = New Move("Ember", 40, 100, 25, "May burn opponent", "Fire", False)
-        Moves(12) = New Move("Fire Blast", 110, 85, 5, "May burn opponent", "Fire", False)
-        Moves(13) = New Move("Fire Punch", 75, 100, 15, "May burn opponent", "Fire", True)
-        Moves(14) = New Move("Fire Spin", 35, 85, 15, "Traps opponent for 4-5 turn, does 1/16th damage at end of turn", "Fire", False)
-        Moves(15) = New Move("Flamethrower", 90, 100, 15, "May burn opponent", "Fire", False)
-        Moves(16) = New Move("Bubble", 40, 100, 30, "May lower opponents speed", "Water", False)
-        Moves(17) = New Move("Bubblebeam", 65, 100, 20, "May lower opponents speed", "Water", False)
-        Moves(18) = New Move("Clamp", 35, 85, 10, "Traps opponent for 4-5 turns, does 1/16th damage at end of turn", "Water", True)
-        Moves(19) = New Move("Crabhammer", 100, 90, 10, "Higher chance for crit", "Water", True)
+        Moves(11) = New Move("Ember", 40, 100, 25, "BR", "Fire", False)
+        Moves(12) = New Move("Fire Blast", 110, 85, 5, "BR", "Fire", False)
+        Moves(13) = New Move("Fire Punch", 75, 100, 15, "BR", "Fire", True)
+        '  Moves(14) = New Move("Fire Spin", 35, 85, 15, "TP, LH", "Fire", False)
+        Moves(15) = New Move("Flamethrower", 90, 100, 15, "BR", "Fire", False)
+        Moves(16) = New Move("Bubble", 40, 100, 30, "LSP", "Water", False)
+        Moves(17) = New Move("Bubblebeam", 65, 100, 20, "LSP", "Water", False)
+        Moves(18) = New Move("Clamp", 35, 85, 10, "TP,LH", "Water", True)
+        Moves(19) = New Move("Crabhammer", 100, 90, 10, "HCR", "Water", True)
         Moves(20) = New Move("Hydro Pump", 110, 80, 5, "Nothing", "Water", False)
         Moves(21) = New Move("Surf", 90, 100, 15, "Nothing", "Water", False)
         Moves(22) = New Move("Water Gun", 40, 100, 25, "Nothing", "Water", False)
-        Moves(23) = New Move("Waterfall", 80, 100, 15, "May Flinch", "Water", True)
-        Moves(24) = New Move("Withdraw", 0, 100, 40, "Raises Defence", "Water", False)
-        Moves(25) = New Move("Acid", 40, 100, 30, "May Lower Special Defence", "Poison", False)
-        Moves(26) = New Move("Acid Armour", 0, 100, 20, "Raises Defence by 2 stages", "Poison", False)
-        Moves(27) = New Move("Poison Gas", 0, 100, 40, "Gives opponent poison", "Poison", False)
-        Moves(28) = New Move("Poison Powder", 0, 75, 35, "Gives opponent poison", "Poison", False)
-        Moves(29) = New Move("Poison Sting", 15, 100, 35, "May poison opponent", "Poison", False)
-        Moves(30) = New Move("Sludge", 65, 100, 20, "May poison opponent", "Poison", False)
-        Moves(31) = New Move("Smog", 30, 70, 20, "May poison opponent", "Poison", False)
-        Moves(32) = New Move("Toxic", 0, 90, 10, "Gives opponent badly poisoned", "Poison", False)
-        Moves(33) = New Move("Aurora Beam", 65, 100, 20, "May lower opponents attack", "Ice", False)
-        Moves(34) = New Move("Blizzard", 110, 70, 5, "May freeze opponent", "Ice", False)
-        Moves(35) = New Move("Haze", 0, 100, 30, "Resets all stat changes", "Ice", False)
-        Moves(36) = New Move("Ice Beam", 90, 100, 10, "May freeze opponent", "Ice", False)
-        Moves(37) = New Move("Ice Punch", 75, 100, 15, "May freeze opponent", "Ice", False)
-        Moves(38) = New Move("Mist", 0, 100, 30, "Stats can't be changed for 5 turns", "Ice", False)
-        Moves(39) = New Move("Barrage", 15, 85, 20, "Hits opponent 2-5 times", "Normal", True)
-        Moves(40) = New Move("Bide", 0, 100, 10, "User takes damage for two turns then unleashes double of what was taken", "Normal", True)
-        Moves(41) = New Move("Bind", 15, 85, 20, "Traps oppoent for 4-5 turns, does 1/16th of damage at end of turn", "Normal", True)
-        Moves(42) = New Move("Body Slam", 85, 100, 15, "May paralyze opponent", "Normal", True)
-        Moves(43) = New Move("Comet Punch", 18, 85, 15, "Hits the opponent 2-5 times", "Normal", True)
-        Moves(44) = New Move("Constrict", 10, 100, 35, "May lower opponents speed", "Normal", True)
-        Moves(45) = New Move("Conversion", 0, 100, 30, "Changes type to the move in its first slot", "Normal", False)
+        Moves(23) = New Move("Waterfall", 80, 100, 15, "FL", "Water", True)
+        Moves(24) = New Move("Withdraw", 0, 100, 40, "HDF", "Water", False)
+        Moves(25) = New Move("Acid", 40, 100, 30, "LSD", "Poison", False)
+        Moves(26) = New Move("Acid Armour", 0, 100, 20, "HDF*2", "Poison", False)
+        Moves(27) = New Move("Poison Gas", 0, 100, 40, "GPO", "Poison", False)
+        Moves(28) = New Move("Poison Powder", 0, 75, 35, "GPO", "Poison", False)
+        Moves(29) = New Move("Poison Sting", 15, 100, 35, "PO", "Poison", False)
+        Moves(30) = New Move("Sludge", 65, 100, 20, "PO", "Poison", False)
+        Moves(31) = New Move("Smog", 30, 70, 20, "PO", "Poison", False)
+        '  Moves(32) = New Move("Toxic", 0, 90, 10, "BPO", "Poison", False)
+        Moves(33) = New Move("Aurora Beam", 65, 100, 20, "LAT", "Ice", False)
+        Moves(34) = New Move("Blizzard", 110, 70, 5, "FR", "Ice", False)
+        ' Moves(35) = New Move("Haze", 0, 100, 30, "HZ", "Ice", False)
+        Moves(36) = New Move("Ice Beam", 90, 100, 10, "FR", "Ice", False)
+        Moves(37) = New Move("Ice Punch", 75, 100, 15, "FR", "Ice", False)
+        '  Moves(38) = New Move("Mist", 0, 100, 30, "HZ", "Ice", False)
+        Moves(39) = New Move("Barrage", 15, 85, 20, "MH", "Normal", True)
+        Moves(40) = New Move("Bide", 0, 100, 10, "ET", "Normal", True)
+        Moves(41) = New Move("Bind", 15, 85, 20, "TP,LH", "Normal", True)
+        Moves(42) = New Move("Body Slam", 85, 100, 15, "PR", "Normal", True)
+        Moves(43) = New Move("Comet Punch", 18, 85, 15, "MH", "Normal", True)
+        '  Moves(44) = New Move("Constrict", 10, 100, 35, "LSP", "Normal", True)
+        '  Moves(45) = New Move("Conversion", 0, 100, 30, "Changes type to the move in its first slot", "Normal", False)
         Moves(46) = New Move("Cut", 50, 95, 30, "Nothing", "Normal", True)
-        Moves(47) = New Move("Defence Curl", 0, 100, 40, "Raises the users defence", "Normal", False)
-        Moves(48) = New Move("Disable", 0, 100, 20, "Opponent cant use the last used move for 5 turns", "Normal", False)
-        Moves(49) = New Move("Dizzy Punch", 70, 100, 10, "May confuse opponent", "Normal", True)
-        Moves(50) = New Move("Double Slap", 15, 85, 10, "Hits opponent 2-5 times", "Normal", True)
-        Moves(51) = New Move("Double Team", 0, 100, 15, "Raises the users evasion", "Normal", False)
-        Moves(52) = New Move("Double Edge", 120, 100, 15, "User recieves recoil damage", "Normal", True)
+        Moves(47) = New Move("Defence Curl", 0, 100, 40, "HDF", "Normal", False)
+        '  Moves(48) = New Move("Disable", 0, 100, 20, "Opponent cant use the last used move for 5 turns", "Normal", False)
+        Moves(49) = New Move("Dizzy Punch", 70, 100, 10, "CF", "Normal", True)
+        Moves(50) = New Move("Double Slap", 15, 85, 10, "MH", "Normal", True)
+        Moves(51) = New Move("Double Team", 0, 100, 15, "HEV", "Normal", False)
+        Moves(52) = New Move("Double Edge", 120, 100, 15, "RC", "Normal", True)
         Moves(53) = New Move("Egg Bomg", 100, 75, 10, "Nothing", "Normal", True)
-        Moves(54) = New Move("Explosion", 250, 100, 5, "User faints after using", "Normal", True)
-        Moves(55) = New Move("Flash", 0, 100, 25, "Lowers opponents accuracy", "Normal", False)
-        Moves(56) = New Move("Focus Energy", 0, 100, 30, "Increases users critical hit chance", "Normal", False)
-        Moves(57) = New Move("Fury Attack", 15, 85, 20, "Hits opponent 2-5 times", "Normal", True)
-        Moves(58) = New Move("Fury Swipes", 18, 80, 15, "Hits opponent 2-5 times", "Normal", True)
-        Moves(59) = New Move("Glare", 0, 100, 30, "Gives the oppoent paralysis", "Normal", False)
-        Moves(60) = New Move("Growl", 0, 100, 40, "Lowers opponents attack", "Normal", False)
-        Moves(61) = New Move("Growth", 0, 100, 40, "Raises the users attack and special attack", "Normal", False)
-        Moves(62) = New Move("Guillotine", 0, 30, 5, "Instantly kills the opponent", "Normal", True)
-        Moves(63) = New Move("Harden", 0, 100, 30, "Raises users defence", "Normal", False)
-        Moves(64) = New Move("Headbutt", 70, 100, 15, "May flinch opponent", "Normal", True)
+        ' Moves(54) = New Move("Explosion", 250, 100, 5, "User faints after using", "Normal", True)
+        Moves(55) = New Move("Flash", 0, 100, 25, "LAC", "Normal", False)
+        '   Moves(56) = New Move("Focus Energy", 0, 100, 30, "HCR", "Normal", False)
+        Moves(57) = New Move("Fury Attack", 15, 85, 20, "MH", "Normal", True)
+        Moves(58) = New Move("Fury Swipes", 18, 80, 15, "MH", "Normal", True)
+        Moves(59) = New Move("Glare", 0, 100, 30, "GPR", "Normal", False)
+        Moves(60) = New Move("Growl", 0, 100, 40, "LAT", "Normal", False)
+        Moves(61) = New Move("Growth", 0, 100, 40, "HAT, HSA", "Normal", False)
+        Moves(62) = New Move("Guillotine", 0, 30, 5, "OH", "Normal", True)
+        Moves(63) = New Move("Harden", 0, 100, 30, "HDF", "Normal", False)
+        Moves(64) = New Move("Headbutt", 70, 100, 15, "FL", "Normal", True)
         Moves(65) = New Move("Horn Attack", 65, 100, 25, "Nothing", "Normal", True)
-        Moves(66) = New Move("Horn Drill", 0, 30, 5, "Instantly kills the opponent", "Normal", True)
-        Moves(67) = New Move("Hyper Beam", 150, 90, 5, "Takes a turn to rest", "Normal", False)
-        Moves(68) = New Move("Hyper Fang", 80, 90, 15, "May flinch opponent", "Normal", True)
-        Moves(69) = New Move("Leer", 0, 100, 30, "Lowers opponents defence", "Normal", False)
-        Moves(70) = New Move("Lovely Kiss", 0, 75, 10, "Gives opponent sleep", "Normal", False)
+        Moves(66) = New Move("Horn Drill", 0, 30, 5, "OH", "Normal", True)
+        '   Moves(67) = New Move("Hyper Beam", 150, 90, 5, "TT", "Normal", False)
+        ' Moves(68) = New Move("Hyper Fang", 80, 90, 15, "FL", "Normal", True)
+        Moves(69) = New Move("Leer", 0, 100, 30, "LDF", "Normal", False)
+        Moves(70) = New Move("Lovely Kiss", 0, 75, 10, "GSL", "Normal", False)
         Moves(71) = New Move("Mega Kick", 120, 75, 5, "Nothing", "Normal", True)
         Moves(72) = New Move("Mega Punch", 80, 85, 20, "Nothing", "Normal", True)
-        Moves(73) = New Move("Metronome", 0, 100, 10, "Uses a random move", "Normal", False)
-        Moves(74) = New Move("Mimic", 0, 100, 10, "Copies the oppoents last used move", "Normal", False)
-        Moves(75) = New Move("Minimise", 0, 100, 10, "Raises users evasion by 2 stages", "Normal", False)
+        ' Moves(73) = New Move("Metronome", 0, 100, 10, "RN", "Normal", False)
+        '    Moves(74) = New Move("Mimic", 0, 100, 10, "Copies the oppoents last used move", "Normal", False)
+        Moves(75) = New Move("Minimise", 0, 100, 10, "HEV*2", "Normal", False)
         Moves(76) = New Move("Pay Day", 40, 100, 20, "Small amount of money earned at end of fight", "Normal", True)
         Moves(77) = New Move("Pound", 40, 100, 35, "Nothing", "Normal", True)
         Moves(78) = New Move("Quick Attack", 40, 100, 30, "User attacks first", "Normal", True)
-        Moves(79) = New Move("Rage", 20, 100, 20, "Users attack raises when hit", "Normal", True)
-        Moves(80) = New Move("Razor Wind", 80, 100, 10, "Takes a turn to charge, high crit chance", "Normal", False)
-        Moves(81) = New Move("Recover", 0, 100, 10, "Recovers 50% HP", "Normal", False)
-        Moves(82) = New Move("Roar", 0, 100, 20, "In wild battles;insta run away, in Trainer battles, Force swap opponent", "Normal", False)
+        Moves(79) = New Move("Rage", 20, 100, 20, "HAT", "Normal", True)
+        ' Moves(80) = New Move("Razor Wind", 80, 100, 10, "TT, HCR", "Normal", False)
+        Moves(81) = New Move("Recover", 0, 100, 10, "IH", "Normal", False)
+        ' Moves(82) = New Move("Roar", 0, 100, 20, "SW", "Normal", False)
         Moves(83) = New Move("Scratch", 40, 100, 45, "Nothing", "Normal", True)
-        Moves(84) = New Move("Screech", 0, 100, 50, "Lowers opponents defence", "Normal", False)
-        Moves(85) = New Move("Self Destruct", 250, 100, 5, "Users faints after using", "Normal", True)
-        Moves(86) = New Move("Sharpen", 0, 100, 30, "Raises users attack", "Normal", False)
-        Moves(87) = New Move("Sing", 0, 55, 15, "Gives opponent sleep", "Normal", False)
-        Moves(88) = New Move("Skull Bash", 130, 100, 10, "Takes 2 turns to attack, raises users defence", "Normal", True)
+        Moves(84) = New Move("Screech", 0, 100, 50, "LDF", "Normal", False)
+        ' Moves(85) = New Move("Self Destruct", 250, 100, 5, "Users faints after using", "Normal", True)
+        Moves(86) = New Move("Sharpen", 0, 100, 30, "HAT", "Normal", False)
+        Moves(87) = New Move("Sing", 0, 55, 15, "GSL", "Normal", False)
+        '   Moves(88) = New Move("Skull Bash", 130, 100, 10, "TT, HDF", "Normal", True)
         Moves(89) = New Move("Slam", 80, 75, 20, "Nothing", "Normal", True)
-        Moves(90) = New Move("Slash", 70, 100, 20, "High critical chance", "Normal", True)
-        Moves(91) = New Move("Smokescreen", 0, 100, 20, "Lowers opponents accuracy", "Normal", False)
-        Moves(92) = New Move("Soft Boiled", 0, 0,10, ("Recover 50% HP","Normal", False  )
-        Moves(93) = New Move("Sonic Boom", 0, 90, 20, "Always deals 20 damage", "Normal", False)
-        Moves(94) = New Move("Spike Cannon", 20, 100, 15, "Hits 2-5 times", "Normal", True)
+        Moves(90) = New Move("Slash", 70, 100, 20, "HCR", "Normal", True)
+        Moves(91) = New Move("Smokescreen", 0, 100, 20, "LAC", "Normal", False)
+        Moves(92) = New Move("Soft Boiled", 0, 0, 10, "IH", "Normal", False)
+        Moves(93) = New Move("Sonic Boom", 0, 90, 20, "CO", "Normal", False)
+        Moves(94) = New Move("Spike Cannon", 20, 100, 15, "MH", "Normal", True)
         Moves(95) = New Move("Splash", 0, 100, 40, "This move literally does nothing", "Normal", False)
-        Moves(96) = New Move("Stomp", 60, 100, 20, "May flinch opponent, deals double damage if they used minimise", "Normal", True)
+        Moves(96) = New Move("Stomp", 60, 100, 20, "FL", "Normal", True) ' 2* if they used minimize
         Moves(97) = New Move("Strength", 80, 100, 15, "Nothing", "Normal", True)
-        Moves(98) = New Move("Struggle", 50, 100, 0, "Only usable when no PP remains, deals recoil damage, can hit all types", "Normal", true)
-        Moves(99) = New Move("Substitute", 0, 100, 10, "Uses 24% of HP to create a dummy", "Normal", False)
-        Moves(100) = New Move("Super Fang", 0, 90, 10, "Deals exactly half of the users HP", "Normal", True)
-        Moves(101) = New Move("Supersonic", 0, 55, 20, "Gives opponent confusion", "Normal", False)
+        '  Moves(98) = New Move("Struggle", 50, 100, 0, "Only usable when no PP remains,RC, can hit all types", "Normal", True)
+        '  Moves(99) = New Move("Substitute", 0, 100, 10, "Uses 24% of HP to create a dummy", "Normal", False)
+        ' Moves(100) = New Move("Super Fang", 0, 90, 10, "CO", "Normal", True)
+        Moves(101) = New Move("Supersonic", 0, 55, 20, "CF", "Normal", False)
         Moves(102) = New Move("Swift", 0, 100, 60, "Always hits", "Normal", False)
-        Moves(103) = New Move("Swords Dance", 0, 100, 20, "Raises users attack by 2 stages", "Normal", False)
+        Moves(103) = New Move("Swords Dance", 0, 100, 20, "HAT*2", "Normal", False)
         Moves(104) = New Move("Tackle", 40, 100, 35, "Nothing", "Normal", True)
-        Moves(105) = New Move("Tail Whip", 0, 100, 30, "Lowers opponents defence", "Normal", False)
-        Moves(106) = New Move("Take Down", 90, 85, 20, "User recieves recoil damage", "Normal", True)
-        Moves(107) = New Move("Thrash", 120, 100, 10, "User attacks for 2-3 turns, causes self confusion after", "Normal", True)
-        Moves(108) = New Move("Transform", 0, 100, 10, "User copies opponent completely except for HP", "Normal", False)
-        Moves(109) = New Move("Tri Attack", 80, 100, 10, "May burn, freeze or paralyze opponent", "Normal", False)
+        Moves(105) = New Move("Tail Whip", 0, 100, 30, "LDF", "Normal", False)
+        Moves(106) = New Move("Take Down", 90, 85, 20, "RC", "Normal", True)
+        '   Moves(107) = New Move("Thrash", 120, 100, 10, "User attacks for 2-3 turns,", "Normal", True)
+        ' Moves(108) = New Move("Transform", 0, 100, 10, "TR", "Normal", False)
+        Moves(109) = New Move("Tri Attack", 80, 100, 10, "BR, FR, PR", "Normal", False)
         Moves(110) = New Move("Vice Grip", 55, 100, 30, "Nothing", "Normal", True)
-        Moves(111) = New Move("Whirlwind", 0, 0, 100, "In wild battles;insta run away, in Trainer battles, Force swap opponent", "Normal", False)
-        Moves(112) = New Move("Agility", 0, 100, 30, "Raises users speed by two stages", "Psychic", False)
-        Moves(113) = New Move("Amnesia", 0, 100, 20, "Raises users special defence by two stages", "Psychic", False)
-        Moves(114) = New Move("Barrier", 0, 100, 20, "Raises users defence by two stages", "Psychic", False)
-        Moves(115) = New Move("Confusion", 50, 100, 25, "May confuse opponent", "Psychic", False)
-        Moves(116) = New Move("Dream Eater", 100, 100, 15, "Only works on sleeping opponents, 50% of damage dealt is returned as HP", "Psychic", False)
-        Moves(117) = New Move("Hypnosis", 0, 60, 20, "Gives opponent sleep", "Psychic", False)
-        Moves(118) = New Move("Kinesis", 0, 80, 15, "Lowers opponents accuracy", "Psychic", False)
-        Moves(119) = New Move("Light Screen", 0, 100, 30, "Halves damage from special attacks for 5 turns, can be broken if opponent uses Brick Break", "Psychic", False)
-        Moves(120) = New Move("Meditate", 0, 100, 40, "Raises the users attack", "Psychic", False)
-        Moves(121) = New Move("Psybeam", 65, 100, 20, "May confuse opponent", "Psychic", False)
-        Moves(122) = New Move("Psychic", 90, 100, 10, "May lower opponents special defence", "Psychic", False)
-        Moves(123) = New Move("Psywave", 0, 80, 15, "Damage is based on users level, deals anywhere from 50% to 150% of it", "Psychic", False)
-        Moves(124) = New Move("Reflect", 0, 100, 20, "Halves damage from physical attacks for 5 turns, can be broken if opponent uses Brick Break", "Psychic", False)
-        Moves(125) = New Move("Rest", 0, 100, 10, "Fully heals user but puts them to sleep", "Psychic", False)
-        Moves(126) = New Move("Teleport", 0, 100, 20, "Flee instantly from wild battles", "Psychic", False)
-        Moves(127) = New Move("Wrap", 15, 90, 20, "Traps opponent for 4-5 turns, deals 1/16th damage at end of turn", "Normal", True)
-        Moves(128) = New Move("Bite", 60, 100, 25, "May flinch opponent", "Dark", True)
-        Moves(129) = New Move("Bone Club", 65, 85, 20, "May flinch opponent", "Ground", True)
-        Moves(130) = New Move("Bonemerang", 50, 90, 10, "Hits opponent twice", "Ground", True)
-        Moves(131) = New Move("Dig", 80, 100, 10, "Takes 2 turns to attack", "Ground", True)
-        Moves(132) = New Move("Earthquake", 100, 100, 10, "Power is doubled if the opponent has used Dig", "Ground", True)
-        Moves(133) = New Move("Fissure", 0, 30, 5, "Instantly defeats opponent", "Ground", True)
-        Moves(134) = New Move("Sand Attack", 0, 100, 15, "Lowers opponents accuracy", "Ground", False)
-        Moves(135) = New Move("Confuse Ray", 0, 100, 10, "Gives opponent confusion", "Ghost", False)
-        Moves(136) = New Move("Lick", 30, 100, 30, "May paralyze opponent", "Ghost", True)
-        Moves(137) = New Move("Night Shade", 0, 100, 15, "Deals damage equal to level", "Ghost", False)
-        Moves(138) = New Move("Counter", 0, 100, 20, "If opponent hit with a physical move, hit back for double damage", "Fighting", True)
-        Moves(139) = New Move("Double Kick", 30, 100, 30, "Hits opponent twice", "Fighting", True)
+        '  Moves(111) = New Move("Whirlwind", 0, 0, 100, "SW", "Normal", False)
+        Moves(112) = New Move("Agility", 0, 100, 30, "LSP*2", "Psychic", False)
+        Moves(113) = New Move("Amnesia", 0, 100, 20, "HSD*2", "Psychic", False)
+        Moves(114) = New Move("Barrier", 0, 100, 20, "HDF*2", "Psychic", False)
+        Moves(115) = New Move("Confusion", 50, 100, 25, "CF", "Psychic", False)
+        ' Moves(116) = New Move("Dream Eater", 100, 100, 15, "IH", "Psychic", False) ' only works on slp oppo
+        Moves(117) = New Move("Hypnosis", 0, 60, 20, "GSL", "Psychic", False)
+        Moves(118) = New Move("Kinesis", 0, 80, 15, "LAC", "Psychic", False)
+        '  Moves(119) = New Move("Light Screen", 0, 100, 30, "Nothing", "Psychic", False)
+        Moves(120) = New Move("Meditate", 0, 100, 40, "HAT", "Psychic", False)
+        Moves(121) = New Move("Psybeam", 65, 100, 20, "CF", "Psychic", False)
+        Moves(122) = New Move("Psychic", 90, 100, 10, "LSD", "Psychic", False)
+        ' Moves(123) = New Move("Psywave", 0, 80, 15, "CO", "Psychic", False)
+        '  Moves(124) = New Move("Reflect", 0, 100, 20, "Nothing", "Psychic", False)
+        Moves(125) = New Move("Rest", 0, 100, 10, "IH, GSL", "Psychic", False)
+        '  Moves(126) = New Move("Teleport", 0, 100, 20, "SW", "Psychic", False)
+        Moves(127) = New Move("Wrap", 15, 90, 20, "TP,LH", "Normal", True)
+        Moves(128) = New Move("Bite", 60, 100, 25, "FL", "Dark", True)
+        Moves(129) = New Move("Bone Club", 65, 85, 20, "FL", "Ground", True)
+        Moves(130) = New Move("Bonemerang", 50, 90, 10, "MH", "Ground", True)
+        '   Moves(131) = New Move("Dig", 80, 100, 10, "TT", "Ground", True)
+        Moves(132) = New Move("Earthquake", 100, 100, 10, "Nothing", "Ground", True)
+        Moves(133) = New Move("Fissure", 0, 30, 5, "OH", "Ground", True)
+        Moves(134) = New Move("Sand Attack", 0, 100, 15, "LAC", "Ground", False)
+        Moves(135) = New Move("Confuse Ray", 0, 100, 10, "CF", "Ghost", False)
+        Moves(136) = New Move("Lick", 30, 100, 30, "PR", "Ghost", True)
+        '  Moves(137) = New Move("Night Shade", 0, 100, 15, "CO", "Ghost", False)
+        '  Moves(138) = New Move("Counter", 0, 100, 20, "CU", "Fighting", True)
+        Moves(139) = New Move("Double Kick", 30, 100, 30, "MH", "Fighting", True)
         Moves(140) = New Move("High Jump Kick", 130, 90, 10, "If the move misses, users loses 50% hp", "Fighting", True)
         Moves(141) = New Move("Jump Kick", 100, 95, 10, "If the move misses, user loses 50% HP", "Fighting", True)
-        Moves(142) = New Move("Karate Chop", 50, 100, 25, "High crit chance", "Fighting", True)
-        Moves(143) = New Move("Low Kick", 0, 100, 25, "Deals damage based on opponents weight", "Fighting", True)
-        Moves(144) = New Move("Rolling Kick", 60, 85, 15, "May flinch opponent", "Fighting", True)
-        Moves(145) = New Move("Seismic Toss", 0, 100, 20, "Deals damage equal to users level", "Fighting", True)
-        Moves(146) = New Move("Submission", 80, 80, 20, "User takes recoil damage", "Fighting", True)
-        Moves(147) = New Move("Dragon Rage", 0, 100, 15, "Always deals 40 damage", "Dragon", False)
+        Moves(142) = New Move("Karate Chop", 50, 100, 25, "HCR", "Fighting", True)
+        Moves(143) = New Move("Low Kick", 0, 100, 25, "CO", "Fighting", True)
+        Moves(144) = New Move("Rolling Kick", 60, 85, 15, "FL", "Fighting", True)
+        Moves(145) = New Move("Seismic Toss", 0, 100, 20, "CO", "Fighting", True)
+        Moves(146) = New Move("Submission", 80, 80, 20, "RC", "Fighting", True)
+        ' Moves(147) = New Move("Dragon Rage", 0, 100, 15, "CO", "Dragon", False)
         Moves(148) = New Move("Drill Peck", 80, 100, 20, "Nothing", "Flying", True)
-        Moves(149) = New Move("Fly", 90, 95, 15, "Takes two turns to attack", "Flying", True)
-        Moves(150) = New Move("Gust", 40, 100, 35, "Deals double damage if opponent used fly", "Flying", False)
-        Moves(151) = New Move("Mirror Move", 0, 100, 20, "Users performs last move used by opponent", "Flying", False)
+        '  Moves(149) = New Move("Fly", 90, 95, 15, "TT", "Flying", True)
+        Moves(150) = New Move("Gust", 40, 100, 35, "Nothing", "Flying", False)
+        '  Moves(151) = New Move("Mirror Move", 0, 100, 20, "Users performs last move used by opponent", "Flying", False)
         Moves(152) = New Move("Peck", 35, 100, 35, "Nothing", "Flying", True)
-        Moves(153) = New Move("Sky Attack", 140, 90, 5, "Takes 2 turns to attack, may flinch opponent", "Flying", True)
+        Moves(153) = New Move("Sky Attack", 140, 90, 5, "TT, FL", "Flying", True)
         Moves(154) = New Move("Wing Attack", 60, 100, 35, "Nothing", "Flying", True)
-        Moves(155) = New Move("Leech Life", 80, 100, 10, "Users heals for 50% of damage dealt", "Bug", True)
-        Moves(156) = New Move("Pin Missile", 25, 90, 20, "Hits opponent 2 to 5 times", "Bug", True)
-        Moves(157) = New Move("String Shot", 0, 95, 40, "Lowers opponents speed", "Bug", False)
-        Moves(158) = New Move("Twineedle", 25, 100, 20, "Hits opponent twice, may poison opponent", "Bug", True)
-        Moves(159) = New Move("Thunder", 110, 70, 10, "May paralyze opponent", "Electric", False)
-        Moves(160) = New Move("Thunder Punch", 75, 100, 15, "May paralyze opponent", "Electric", True)
-        Moves(161) = New Move("Thunder Shock", 40, 100, 30, "May paralyze opponent", "Electric", False)
-        Moves(162) = New Move("Thunder Wave", 0, 90, 20, "Gives opponent paralysis", "Electric", False)
-        Moves(163) = New Move("Thunderbolt", 90, 100, 15, "May paralyze opponent", "Electric", False)
-        Moves(164) = New Move("Rock Slide", 75, 90, 10, "May flinch opponent", "Rock", True)
+        Moves(155) = New Move("Leech Life", 80, 100, 10, "IH", "Bug", True)
+        Moves(156) = New Move("Pin Missile", 25, 90, 20, "MH", "Bug", True)
+        Moves(157) = New Move("String Shot", 0, 95, 40, "LSP", "Bug", False)
+        Moves(158) = New Move("Twineedle", 25, 100, 20, "MH, PO", "Bug", True)
+        Moves(159) = New Move("Thunder", 110, 70, 10, "PR", "Electric", False)
+        Moves(160) = New Move("Thunder Punch", 75, 100, 15, "PR", "Electric", True)
+        Moves(161) = New Move("Thunder Shock", 40, 100, 30, "PR", "Electric", False)
+        Moves(162) = New Move("Thunder Wave", 0, 90, 20, "GPR", "Electric", False)
+        Moves(163) = New Move("Thunderbolt", 90, 100, 15, "PR", "Electric", False)
+        Moves(164) = New Move("Rock Slide", 75, 90, 10, "FL", "Rock", True)
         Moves(165) = New Move("Rock Throw", 50, 90, 15, "Nothing", "Rock", True)
+    End Function
+    Public Function Perform()
+        Private MoveEffect As Array
+        MoveEffect(1) = "HCR"
+        MoveEffect(2) = "PR"
+        MoveEffect(3) = "GPR"
+        MoveEffect(4) = "FR"
+        MoveEffect(5) = "BR"
+        MoveEffect(6) = "GBR"
+        MoveEffect(7) = "PO"
+        MoveEffect(8) = "BPO"
+        MoveEffect(9) = "GPO"
+        MoveEffect(10) = "CF"
+        MoveEffect(11) = "GCF"
+        MoveEffect(12) = "SL"
+        MoveEffect(13) = "GSL"
+        MoveEffect(14) = "LDF"
+        MoveEffect(15) = "LAT"
+        MoveEffect(16) = "LSP"
+        MoveEffect(17) = "LSA"
+        MoveEffect(18) = "LSD"
+        MoveEffect(19) = "HDF"
+        MoveEffect(20) = "HAT"
+        MoveEffect(21) = "HSP"
+        MoveEffect(22) = "HSA"
+        MoveEffect(23) = "HSD"
+        MoveEffect(24) = "RC"
+        MoveEffect(25) = "FL"
+        MoveEffect(26) = "CO"
+        MoveEffect(27) = "MH"
+        MoveEffect(28) = "TT"
+        MoveEffect(29) = "OH"
+        MoveEffect(31) = "SW"
+        MoveEffect(32) = "SB"
+        MoveEffect(33) = "RN"
+        MoveEffect(34) = "LH"
+        MoveEffect(35) = "HZ"
+        MoveEffect(36) = "DH"
+        MoveEffect(37) = "IH"
+        MoveEffect(38) = "TP"
+        MoveEffect(39) = "TR"
+        MoveEffect(40) = "ET"
+        MoveEffect(41) = "CU"
+        MoveEffect(42) = "LAC"
+        MoveEffect(43) = "LEV"
+        MoveEffect(44) = "HAC"
+        MoveEffect(45) = "HEV"
+        ' HCR = High crit chance
+        'PR is paralysis
+        ' FR is freeze
+        'BR is burn
+        'PO is poison
+        'BPO is badly poisoned
+        'CF is confusion
+        ' GPR, GBR, GSP, GPO, GCF is guaranteed versions
+        'SL is sleep
+        'DF is def
+        'AT is attack
+        'SP is speed
+        'SA is special attack
+        'SD is special defence
+        'LDF, LAT, LSP, LSA, LSD, LAC, LEV is lowered stats
+        'HDF, HAT, HSP, HSA, HSD, HAC, HEV is increased stats
+        'AC is accuracy
+        'EV is Evasion
+        'RC is recoil
+        'FL is flinch
+        'CO is consistent damage
+        'MH is multihit 
+        'TT is two turn attacks
+        'OH is One shot kills
+
+        'SW is forcing switching opponents/running away (Roar and whirlwind)
+        'SB is substitute (making a decoy)
+        'RN is random move (metronome)
+        'LH is lingering damage (Bind for instance)
+        'HZ is reset stats (Haze)
+        'DH is drain HP
+        'IH is restore HP
+        'TP is trapping opponents (Also bind)
+        'TR is transform 
+        'ET is three turn attacks (basically just bide)
+        'CU is counter
+
+
+    End Function
+End Class
