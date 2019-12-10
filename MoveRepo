@@ -1,9 +1,13 @@
 Public Class MoveRepo
     Private Shared mInstance As MoveRepo = New MoveRepo
     Private Moves As Array
+    Private MoveEffect As Array
 
-    Function GetMoveByName()
-
+    Function GetMoveByName(String name) As Move
+        For index As Integer = 1 To 165
+            if (Moves(index).Name() == name)   
+                return Moves(index)
+        Next
     End Function
 
     Private Sub New()
@@ -15,6 +19,7 @@ Public Class MoveRepo
             Return mInstance
         End Get
     End Property
+    
     Public Shared Function init()
         Moves(1) = New Move("Absorb", 20, 100, 25, "IH", "Grass", False)
         Moves(2) = New Move("Leech seed", 0, 90, 10, "DH,IH", "Grass", False)
@@ -181,9 +186,8 @@ Public Class MoveRepo
         Moves(163) = New Move("Thunderbolt", 90, 100, 15, "PR", "Electric", False)
         Moves(164) = New Move("Rock Slide", 75, 90, 10, "FL", "Rock", True)
         Moves(165) = New Move("Rock Throw", 50, 90, 15, "Nothing", "Rock", True)
-    End Function
-    Public Function Perform()
-        Private MoveEffect As Array
+    
+       
         MoveEffect(1) = "HCR"
         MoveEffect(2) = "PR"
         MoveEffect(3) = "GPR"
@@ -264,7 +268,6 @@ Public Class MoveRepo
         'TR is transform 
         'ET is three turn attacks (basically just bide)
         'CU is counter
-
 
     End Function
 End Class
