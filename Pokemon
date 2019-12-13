@@ -1,17 +1,88 @@
 Public Class Pokemon
-    Public PokeName As String
-    Private PokeStats As Array
-    Public PokeLVL As Integer
+    Private PokeHP As Integer
+    Private PokeATK As Integer
+    Private PokeDEF As Integer
+    Private PokeSPAK As Integer
+    Private PokeSPDEF As Integer
+    Private PokeSPD As Integer
+    Private PokeName As String
+    Private PokeType As String
+    Public Sub New(ByVal pPokeHP As Integer, ByVal pPokeATK As Integer, ByVal pPokeDEF As Integer, ByVal pPokeSPAK As Integer, ByVal pPokeSPDEF As Integer, _
+                   ByVal pPokeSPD As Integer, ByVal pPokeName As String, ByVal pPokeType As String)
+        PokeHP = pPokeHP
+        PokeATK = pPokeATK
+        PokeDEF = pPokeDEF
+        PokeSPAK = pPokeSPAK
+        PokeSPDEF = pPokeSPDEF
+        PokeSPD = pPokeSPD
+        PokeName = pPokeName
+        PokeType = pPokeType
+    End Sub
+    Public Property HP() As String
+        Get
+            Return PokeHP
+        End Get
+        Set(ByVal value As String)
+            PokeHP = value
+        End Set
+    End Property
+    Public Property ATK() As String
+        Get
+            Return PokeATK
+        End Get
+        Set(ByVal value As String)
+            PokeATK = value
+        End Set
+    End Property
+    Public Property DEF() As String
+        Get
+            Return PokeDEF
+        End Get
+        Set(ByVal value As String)
+            PokeDEF = value
+        End Set
+    End Property
+    Public Property SPAK() As String
+        Get
+            Return PokeSPAK
+        End Get
+        Set(ByVal value As String)
+            PokeSPAK = value
+        End Set
+    End Property
+    Public Property SPDEF() As String
+        Get
+            Return PokeSPDEF
+        End Get
+        Set(ByVal value As String)
+            PokeSPDEF = value
+        End Set
+    End Property
+    Public Property SPD() As String
+        Get
+            Return PokeSPD
+        End Get
+        Set(ByVal value As String)
+            PokeSPD = value
+        End Set
+    End Property
+    Public Property Name() As String
+        Get
+            Return PokeName
+        End Get
+        Set(ByVal value As String)
+            PokeName = value
+        End Set
+    End Property
+    Public Property Type() As String
+        Get
+            Return PokeType
+        End Get
+        Set(ByVal value As String)
+            PokeType = value
+        End Set
+    End Property
 
-    Public Function GetStats() As Integer
-        PokeStats(1) = "HP"
-        PokeStats(2) = "ATK"
-        PokeStats(3) = "DEF"
-        PokeStats(4) = "SPAK"
-        PokeStats(5) = "SPDEF"
-        PokeStats(6) = "SPD"
-
-    End Function
     Public Function DamageCalc(ByVal MovePower As Integer, ByVal IsPhysical As Boolean, ByRef Damage As Integer)
         'Damage = ((((2*level/5)+2)*Power*Attack/Defence)/50)+2)*Modifier
         'Modifiers = crit * Random * STAB * burn * other
@@ -60,14 +131,21 @@ Public Class Pokemon
             If IsPhysical = True Then
                 Modifier = CritVal * RanVal * STAB * TypVal * BRN * OtherVal
         DMGDealt = ((((2*PokeLVL/5)+2)*MovePower*PokeStats(2)/PokeStats(3))/50)+2)*Modifier()
+                If DMGDealt = 0 Then
+                    DMGDealt = 1
+                End If
             Else
-                Modifier = CritVal * RanVal * STAB * TypVal * BRN * OtherVal
+                If MovePower = 0 Then
+                    DMGDealt = 0
+                Else
+                    Modifier = CritVal * RanVal * STAB * TypVal * BRN * OtherVal
         DMGDealt = ((((2*PokeLVL/5)+2)*MovePower*PokeStats(4)/PokeStats(5))/50)+2)*Modifier()
+                    If DMGDealt = 0 Then
+                        DMGDealt = 1
+                    End If
+                End If
             End If
 
-            If DMGDealt = 0 Then
-                DMGDealt = 1
-            End If
             Damage = DMGDealt
             Return Damage
     End Function
