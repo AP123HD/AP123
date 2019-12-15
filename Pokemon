@@ -7,8 +7,13 @@ Public Class Pokemon
     Private PokeSPD As Integer
     Private PokeName As String
     Private PokeType As String
+    Private PokeMove1 As String
+    Private PokeMove2 As String
+    Private PokeMove3 As String
+    Private PokeMove4 As String
     Public Sub New(ByVal pPokeHP As Integer, ByVal pPokeATK As Integer, ByVal pPokeDEF As Integer, ByVal pPokeSPAK As Integer, ByVal pPokeSPDEF As Integer, _
-                   ByVal pPokeSPD As Integer, ByVal pPokeName As String, ByVal pPokeType As String)
+                   ByVal pPokeSPD As Integer, ByVal pPokeName As String, ByVal pPokeType As String, ByVal pPokeMove1 As String, ByVal pPokeMove2 As String, _
+                   ByVal pPokeMove3 As String, ByVal pPokeMove4 As String)
         PokeHP = pPokeHP
         PokeATK = pPokeATK
         PokeDEF = pPokeDEF
@@ -17,6 +22,10 @@ Public Class Pokemon
         PokeSPD = pPokeSPD
         PokeName = pPokeName
         PokeType = pPokeType
+        PokeMove1 = pPokeMove1
+        PokeMove2 = pPokeMove2
+        PokeMove3 = pPokeMove3
+        PokeMove4 = pPokeMove4
     End Sub
     Public Property HP() As String
         Get
@@ -80,6 +89,38 @@ Public Class Pokemon
         End Get
         Set(ByVal value As String)
             PokeType = value
+        End Set
+    End Property
+    Public Property Move1() As String
+        Get
+            Return PokeMove1
+        End Get
+        Set(ByVal value As String)
+            PokeMove1 = value
+        End Set
+    End Property
+    Public Property Move2() As String
+        Get
+            Return PokeMove2
+        End Get
+        Set(ByVal value As String)
+            PokeMove2 = value
+        End Set
+    End Property
+    Public Property Move3() As String
+        Get
+            Return PokeMove3
+        End Get
+        Set(ByVal value As String)
+            PokeMove3 = value
+        End Set
+    End Property
+    Public Property Move4() As String
+        Get
+            Return PokeMove4
+        End Get
+        Set(ByVal value As String)
+            PokeMove4 = value
         End Set
     End Property
 
