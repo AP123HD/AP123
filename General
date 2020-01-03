@@ -1,88 +1,34 @@
-Public Class Form1
-
+Public Class Main
+    Dim Ans As Integer
+    Dim Ans2 As Integer = 0
     Public Sub Form1_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-        Dim Ans As Integer
-        Dim Ans2 As Integer = 0
-        Dim P1team As String
-        Dim P2team As String
-        Console.WriteLine("Welcome to the Pokemon Battle sim. Would you like to 1: Load the Simulator or 2: Close the project.")
-        Ans()
-        Select Case (Ans)
-            Case 1
-                Console.WriteLine("Would you like to 1: Load a team, 2: Create a team or 3: Choose an opponent")
-                Ans()
-                Select Case (Ans)
-                    Case 1
-                        ' WIP, should read a text doc
-                        P1team =
-                        Ans2 = 1
+        MoveRepo.init()
+        PokeRepo.PokeInit()
 
-                    Case 2
-                        ' WIP, should be able to make a team
-                        TeamCreation1(P1team)
-                        Ans2 = 1
-                    Case 3
-                        Console.WriteLine("Would you like to play against 1: An AI opponent or 2: A player opponent.")
-                        Ans()
-                        Console.WriteLine("Would you like your chosen opponent to use 1: A premade team, 2: A random team or 3: A team you can create right now")
-                        Ans()
-                        Select Case Ans
-                            Case 1
-                                ' same as before
-                            Case 2
-                                ' picks 6 random pokemon and makes a team outta them.
-                            Case 3
-                                TeamCreation2(P2team)
-
-                                If Ans2 = 0 Then
-                                    Console.WriteLine("Player 1 does not have a team, would you like to 1: Use a premade team, 2: Use a random team or 3: Use a team you can create right now")
-                                    Ans()
-                                    Select Case Ans
-                                        Case 1
-                                            ' WIP
-                                        Case 2
-                                            ' WIP
-                                        Case 3
-                                            TeamCreation1(P1team)
-                                    End Select
-                                ElseIf Ans2 = 1 Then
-                                End If
-                        End Select
-                End Select
-            Case 2
-                Return
-        End Select
-
-
+        BTN2.Hide()
+        BTN3.Hide()
+        MsgBox("Welcome to the Pokemon Battle simulator.")
     End Sub
-    Public Sub TeamCreation1(ByRef P1Team As String)
-        Dim TSlots As Integer
-        Dim PSlot As Integer
-
-        Console.WriteLine("How many team slots would you like to use?")
-        TSlots()
-        Do Until TSlots = 0
-            Console.WriteLine("Please type the number of the pokemon you want to add to your team")
-            PSlot()
-            TSlots = TSlots - 1
-        Loop
-        For i As Integer = 1 To 6
-        Next
-        Return P1Team
+    Public Shared Sub RandomTeam1() ' should get a random team
+        Dim Team1 As Array
+        Pokemon.GetRandomPoke1(Team1)
     End Sub
-    Public Sub TeamCreation2(ByRef P2Team As String)
-        Dim TSlots As Integer
-        Dim PSlot As Integer
+    Public Shared Sub RandomTeam2() ' should get a random team
+        Dim Team2 As Array
+        Pokemon.GetRandomPoke2(Team2)
+    End Sub
+    Public Sub BTNLS_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BTNLS.Click
+        BTNLS.Hide()
+        MsgBox("Option Confirmed")
+        MsgBox("Loading simulator....")
+        RandomTeam1()
+        MsgBox("Player 1's team complete")
+        RandomTeam2()
+        MsgBox("Player 2's team complete")
+        MsgBox("Loading Fight....")
+    End Sub
 
-        Console.WriteLine("How many team slots would you like to use?")
-        TSlots()
-        Do Until TSlots = 0
-            Console.WriteLine("Please type the number of the pokemon you want to add to your team")
-            PSlot()
-            TSlots = TSlots - 1
-        Loop
-        For i As Integer = 1 To 6
-        Next
-        Return P2Team
+    Private Sub BTN2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BTN2.Click
+        Ans = 2
     End Sub
 End Class
